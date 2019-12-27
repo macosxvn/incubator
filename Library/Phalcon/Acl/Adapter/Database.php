@@ -398,7 +398,7 @@ class Database extends AbstractAdapter
      * @param string $resourceName
      * @param array|string $accessList
      */
-    public function dropComponentAccess(string $resourceName, $accessList)
+    public function dropComponentAccess(string $resourceName, $accessList): void
     {
         throw new BadMethodCallException('Not implemented yet.');
     }
@@ -424,7 +424,7 @@ class Database extends AbstractAdapter
      * @param mixed $func
      * @throws Exception
      */
-    public function allow(string $roleName, string $resourceName, $access, $func = null)
+    public function allow(string $roleName, string $resourceName, $access, $func = null): void
     {
         $this->allowOrDeny($roleName, $resourceName, $access, Enum::ALLOW);
     }
@@ -438,7 +438,7 @@ class Database extends AbstractAdapter
      * @param integer $action
      * @throws Exception
      */
-    protected function allowOrDeny(string $roleName, string $resourceName, $access, $action)
+    protected function allowOrDeny(string $roleName, string $resourceName, $access, $action): void
     {
         if (!$this->isRole($roleName)) {
             throw new Exception(
@@ -611,7 +611,7 @@ class Database extends AbstractAdapter
      * @return boolean
      * @throws Exception
      */
-    public function deny($roleName, $resourceName, $access, $func = null)
+    public function deny($roleName, $resourceName, $access, $func = null): void
     {
         $this->allowOrDeny($roleName, $resourceName, $access, Enum::DENY);
     }
@@ -697,7 +697,7 @@ class Database extends AbstractAdapter
      *
      * @param int $defaultAccess Phalcon\Enum::ALLOW or Phalcon\Enum::DENY
      */
-    public function setNoArgumentsDefaultAction($defaultAccess)
+    public function setNoArgumentsDefaultAction($defaultAccess): void
     {
         $this->noArgumentsDefaultAction = intval($defaultAccess);
     }
